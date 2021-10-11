@@ -1,0 +1,18 @@
+* {
+    margin : 0px;
+    padding : 0px;
+    box-sizing : border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+.landingpage-container {
+    background-color : black;
+    width : 90vw;
+    height : 90vh;
+    overflow-y : scroll;
+    display : block;
+    position : relative;
+    margin-left : auto;
+    margin-right : auto;
+    top : 50%;
+    transform : translateY(5vh);
+}

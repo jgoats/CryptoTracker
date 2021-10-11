@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDom from "react-dom";
+import Landingpage from "../src/components/landingpage/landingpage.js"
 
 export default function App() {
     return (
         <div>
-            hello from APP
+            <Landingpage />
         </div>
     )
 }
