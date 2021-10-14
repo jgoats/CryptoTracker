@@ -1,5 +1,7 @@
 import React from "react";
 import "./landingpage.scss";
+import Navigation from "../navigation/navigation.js";
+import Favorites from "../favorites/favorites.js";
 import SearchBar from "../searchbar/searchbar.js";
 
 export default class Landingpage extends React.Component {
@@ -11,8 +13,8 @@ export default class Landingpage extends React.Component {
     }
     render() {
         return (
-            <div class="landingpage-container">
-                <SearchBar />
+            <div className="landingpage-container">
+                <Navigation />
             </div>
         )
     }
