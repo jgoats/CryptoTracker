@@ -1,0 +1,12 @@
+.favorite-icon-container {
+    display : flex;
+    align-items : center;
+    justify-content: flex-start;
+}
+.favorite-icon {
+    width : 35px;
+    margin : 20px;
+}
+.favorite-icon:hover {
+    cursor: pointer;
+}
