@@ -12,20 +12,19 @@
     justify-content: space-around;
 }
 .graph-btn {
-    color : black;
+    color : white;
     border : none;
-    background-color: rgb(142, 255, 127);
+    background-color: black;
     font-size : 14px;
-    font-weight : bold;
-    border-radius : 10px;
-    padding : 2px 3px 2px 3px;
-    box-shadow : 0px 0px 3px black;
+    border-radius : 5px;
+    padding : 3px 4px 3px 4px;
+    box-shadow : 0px 0px 5px black;
 }
 .graph-btn:hover {
     cursor: pointer;
 }
 .btn-active {
-    background-color: rgb(52, 94, 47);
+    background-color: rgb(106, 0, 168);
 }
 .custom-label {
     display : flex;

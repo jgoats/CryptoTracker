@@ -16,7 +16,7 @@ export default class LineGraph extends React.Component {
         let customLabel = document.getElementsByClassName("custom-label")[0];
         document.getElementsByClassName("graph-btn-container")[0].firstChild.classList.add("btn-active");
         let labels = [];
-        for (let i = 1; i <= 24; i++) {
+        for (let i = 24; i > 0; i--) {
             let label = React.createElement(
                 "div",
                 { key: i },
@@ -43,7 +43,7 @@ export default class LineGraph extends React.Component {
             case "yesterday":
                 ReactDom.unmountComponentAtNode(customLabel);
                 labels = [];
-                for (let i = 1; i <= 24; i++) {
+                for (let i = 24; i > 0; i--) {
                     let label = React.createElement(
                         "div",
                         { key: i },
@@ -57,7 +57,7 @@ export default class LineGraph extends React.Component {
             case "last week":
                 ReactDom.unmountComponentAtNode(customLabel);
                 labels = [];
-                for (let i = 1; i <= 7; i++) {
+                for (let i = 7; i > 0; i--) {
                     let label = React.createElement(
                         "div",
                         { key: i },
@@ -71,7 +71,7 @@ export default class LineGraph extends React.Component {
             case "last month":
                 ReactDom.unmountComponentAtNode(customLabel);
                 labels = [];
-                for (let i = 1; i <= 30; i++) {
+                for (let i = 30; i > 0; i--) {
                     let label = React.createElement(
                         "div",
                         { key: i },
@@ -85,7 +85,7 @@ export default class LineGraph extends React.Component {
             case "last 6 months":
                 ReactDom.unmountComponentAtNode(customLabel);
                 labels = [];
-                for (let i = 1; i <= 6; i++) {
+                for (let i = 6; i > 0; i--) {
                     let label = React.createElement(
                         "div",
                         { key: i },
@@ -99,7 +99,7 @@ export default class LineGraph extends React.Component {
             case "last year":
                 ReactDom.unmountComponentAtNode(customLabel);
                 labels = [];
-                for (let i = 1; i <= 12; i++) {
+                for (let i = 12; i > 0; i--) {
                     let label = React.createElement(
                         "div",
                         { key: i },
@@ -113,7 +113,7 @@ export default class LineGraph extends React.Component {
             case "last 5 years":
                 ReactDom.unmountComponentAtNode(customLabel);
                 labels = [];
-                for (let i = 1; i <= 5; i++) {
+                for (let i = 5; i > 0; i--) {
                     let label = React.createElement(
                         "div",
                         { key: i },
@@ -155,7 +155,7 @@ export default class LineGraph extends React.Component {
                 }} data={data} />
                 <div className="custom-label"></div>
                 <div className="graph-btn-container">
-                    <button className="graph-btn" onClick={(e) => this.handleClick("yesterday", e)}>Yesterday</button>
+                    <button className="graph-btn" onClick={(e) => this.handleClick("yesterday", e)}>Last 24 Hours</button>
                     <button className="graph-btn" onClick={(e) => this.handleClick("last week", e)}>Last Week</button>
                     <button className="graph-btn" onClick={(e) => this.handleClick("last month", e)}>Last 30 Days</button>
                     <button className="graph-btn" onClick={(e) => this.handleClick("last 6 months", e)}>Last 6 Months</button>
