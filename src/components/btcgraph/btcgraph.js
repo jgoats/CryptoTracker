@@ -17,6 +17,7 @@ export default class LineGraph extends React.Component {
         document.getElementsByClassName("graph-btn-container")[0].firstChild.classList.add("btn-active");
         let labels = [];
         for (let i = 24; i > 0; i--) {
+
             let label = React.createElement(
                 "div",
                 { key: i },
