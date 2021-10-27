@@ -1,14 +1,14 @@
 .coin-header-container{
     background-color : black;
     display : grid;
-    grid-template-columns : 1fr 50px 150px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns : 1fr 50px 150px 1fr 1fr 1fr 1fr 2fr;
     grid-template-rows : 50px;
     align-items : center;
     justify-content: center;
 }
 .coin-header-container p {
     display : flex;
-    justify-content: flex-start;
+    //justify-content: flex-start;
     align-items : center;
 }
 .coin-header-container span {
@@ -20,4 +20,8 @@
 .coin-header-name {
     display : flex;
     justify-content: flex-start;
+}
+.coin-header-marketcap {
+    display : flex;
+    justify-content: center;
 }
