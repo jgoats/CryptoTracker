@@ -13,7 +13,8 @@ export default class App extends React.Component {
             dates: [],
             lineGraphColor: [],
             totalvolumn: [],
-            currentcoinprice: ""
+            currentcoinprice: "",
+            handleSpinner: "active-spinner"
         }
         this.handleDuration = this.handleDuration.bind(this);
     }
@@ -22,6 +23,7 @@ export default class App extends React.Component {
         var newUrl;
         switch (num) {
             case 24:
+                this.setState({ handleSpinner: "active-spinner" })
                 url = `api.coingecko.com/api/v3/coins/${this.state.coin}/market_chart?vs_currency=${this.state.currency}&days=1`;
                 newUrl = "https://" + url.replace(" ", "");
                 Axios({
@@ -31,17 +33,13 @@ export default class App extends React.Component {
                         "Content-Type": "application/json"
                     }
                 }).then((result) => {
-                    this.setState({
-                        historicalPrices: [],
-                        dates: []
+                    let prices = result.data.prices.map((price) => {
+                        return Math.floor(price[1])
                     })
-                    result.data.prices.forEach((price, index) => {
-                        if ((index + 1) % 4 == 0) {
-                            this.setState({
-                                historicalPrices: [...this.state.historicalPrices, Math.floor(price[1])],
-                                dates: [...this.state.dates, ""]
-                            })
-                        }
+                    this.setState({
+                        historicalPrices: prices,
+                        dates: prices,
+                        handleSpinner: "default-spinner"
                     })
                     if (this.state.historicalPrices[0] < this.state.historicalPrices[this.state.historicalPrices.length - 1]) {
                         this.setState({
@@ -67,17 +65,13 @@ export default class App extends React.Component {
                         "Content-Type": "application/json"
                     }
                 }).then((result) => {
+                    let prices = result.data.prices.map((price) => {
+                        return Math.floor(price[1])
+                    })
                     this.setState({
-                        historicalPrices: [],
-                        dates: []
-                    });
-                    result.data.prices.forEach((price, index) => {
-                        if ((index + 1) % 2 == 0) {
-                            this.setState({
-                                historicalPrices: [...this.state.historicalPrices, Math.floor(price[1])],
-                                dates: [...this.state.dates, ""]
-                            })
-                        }
+                        historicalPrices: prices,
+                        dates: prices,
+                        handleSpinner: "default-spinner"
                     })
                     if (this.state.historicalPrices[0] < this.state.historicalPrices[this.state.historicalPrices.length - 1]) {
                         this.setState({
@@ -103,18 +97,13 @@ export default class App extends React.Component {
                         "Content-Type": "application/json"
                     }
                 }).then((result) => {
-                    this.setState({
-                        historicalPrices: [],
-                        dates: []
+                    let prices = result.data.prices.map((price) => {
+                        return Math.floor(price[1])
                     })
-                    result.data.prices.forEach((price, index) => {
-                        if ((index + 1) % 8 == 0) {
-                            this.setState({
-                                historicalPrices: [...this.state.historicalPrices, Math.floor(price[1])],
-                                dates: [...this.state.dates, ""]
-                            })
-                        }
-
+                    this.setState({
+                        historicalPrices: prices,
+                        dates: prices,
+                        handleSpinner: "default-spinner"
                     })
                     if (this.state.historicalPrices[0] < this.state.historicalPrices[this.state.historicalPrices.length - 1]) {
                         this.setState({
@@ -140,17 +129,13 @@ export default class App extends React.Component {
                         "Content-Type": "application/json"
                     }
                 }).then((result) => {
-                    this.setState({
-                        historicalPrices: [],
-                        dates: []
+                    let prices = result.data.prices.map((price) => {
+                        return Math.floor(price[1])
                     })
-                    result.data.prices.forEach((price, index) => {
-                        if ((index + 1) % 2 == 0) {
-                            this.setState({
-                                historicalPrices: [...this.state.historicalPrices, Math.floor(price[1])],
-                                dates: [...this.state.dates, ""]
-                            })
-                        }
+                    this.setState({
+                        historicalPrices: prices,
+                        dates: prices,
+                        handleSpinner: "default-spinner"
                     })
                     if (this.state.historicalPrices[0] < this.state.historicalPrices[this.state.historicalPrices.length - 1]) {
                         this.setState({
@@ -176,17 +161,13 @@ export default class App extends React.Component {
                         "Content-Type": "application/json"
                     }
                 }).then((result) => {
-                    this.setState({
-                        historicalPrices: [],
-                        dates: []
+                    let prices = result.data.prices.map((price) => {
+                        return Math.floor(price[1])
                     })
-                    result.data.prices.forEach((price, index) => {
-                        if ((index + 1) % 4 == 0) {
-                            this.setState({
-                                historicalPrices: [...this.state.historicalPrices, Math.floor(price[1])],
-                                dates: [...this.state.dates, ""]
-                            })
-                        }
+                    this.setState({
+                        historicalPrices: prices,
+                        dates: prices,
+                        handleSpinner: "default-spinner"
                     })
                     if (this.state.historicalPrices[0] < this.state.historicalPrices[this.state.historicalPrices.length - 1]) {
                         this.setState({
@@ -212,17 +193,13 @@ export default class App extends React.Component {
                         "Content-Type": "application/json"
                     }
                 }).then((result) => {
-                    this.setState({
-                        historicalPrices: [],
-                        dates: []
+                    let prices = result.data.prices.map((price) => {
+                        return Math.floor(price[1])
                     })
-                    result.data.prices.forEach((price, index) => {
-                        if ((index + 1) % 20 == 0) {
-                            this.setState({
-                                historicalPrices: [...this.state.historicalPrices, Math.floor(price[1])],
-                                dates: [...this.state.dates, ""]
-                            })
-                        }
+                    this.setState({
+                        historicalPrices: prices,
+                        dates: prices,
+                        handleSpinner: "default-spinner"
                     })
                     if (this.state.historicalPrices[0] < this.state.historicalPrices[this.state.historicalPrices.length - 1]) {
                         this.setState({
@@ -243,6 +220,9 @@ export default class App extends React.Component {
     componentDidMount() {
         let url = `api.coingecko.com/api/v3/coins/${this.state.coin}/market_chart?vs_currency=${this.state.currency}&days=1`;
         let newUrl = "https://" + url.replace(" ", "");
+        this.setState({
+            handleSpinner: "active-spinner"
+        })
         Axios({
             method: "get",
             url: newUrl,
@@ -250,19 +230,15 @@ export default class App extends React.Component {
                 "Content-Type": "application/json"
             }
         }).then((result) => {
-            this.setState({
-                historicalPrices: [],
-                dates: [],
-                totalvolumn: []
+            let prices = result.data.prices.map((price) => {
+                return Math.floor(price[1])
             })
-            result.data.prices.forEach((price, index) => {
-                if ((index + 1) % 4 == 0) {
-                    this.setState({
-                        historicalPrices: [...this.state.historicalPrices, Math.floor(price[1])],
-                        dates: [...this.state.dates, ""]
-                    })
-                }
-            });
+            this.setState({
+                historicalPrices: prices,
+                dates: prices,
+                totalvolumn: [],
+                handleSpinner: "default-spinner"
+            })
             result.data.total_volumes.forEach((value, index) => {
                 if ((index + 1) % 12 == 0) {
                     this.setState({
@@ -311,8 +287,10 @@ export default class App extends React.Component {
                     graphlabels={this.state.dates}
                     handleDuration={this.handleDuration}
                     price={this.state.historicalPrices}
-                    information={this.state.information}
-                    currentcoinprice={this.state.currentcoinprice} />
+                    currentcoinprice={this.state.currentcoinprice}
+                    currency={this.state.currency}
+                    handleSpinner={this.state.handleSpinner}
+                />
             </div>
         )
     }
