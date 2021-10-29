@@ -37,8 +37,8 @@ export default class BarGraph extends React.Component {
                         data: this.props.totalvolumn,
                         borderWidth: 2,
                         fill: true,
-                        borderColor: "rgb(129,17,133)",
-                        backgroundColor: "rgba(129,17,133,0.8)",
+                        borderColor: "limegreen",
+                        backgroundColor: "limegreen",
                     }
                 ]
             };
@@ -47,6 +47,13 @@ export default class BarGraph extends React.Component {
             <div className="line-graph">
                 <Bar options={{
                     maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                display: false,
+                            }
+                        }
+                    },
                     plugins: {
                         legend: { display: false },
                     }
