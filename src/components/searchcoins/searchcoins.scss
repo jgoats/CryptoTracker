@@ -1,0 +1,30 @@
+.search-coin-container {
+    align-self : center;
+    flex-direction : row;
+    display : flex;
+   justify-content: center;
+}
+.search-container-shim {
+    width : 20px;
+    height : 30px;
+    background-color : #1f2828;
+    border-radius : 8px 0px 0px 8px;
+}
+.search-eye-glass {
+    width : 20px;
+    background-color : #1f2828;
+}
+.search-coin-input {
+    background-color : #1f2828;
+    border : none;
+    color : white;
+    font-weight : bold;
+    font-size : 1em;
+    padding : 5px 10px 5px 10px;
+    border-radius : 0px 8px 8px 0px;
+    min-width : 200px;
+    width : 250px;
+}
+.search-coin-input:focus {
+    outline : none;
+}
