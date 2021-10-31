@@ -3,7 +3,6 @@
     align-items : center;
     justify-content: flex-end;
     flex-direction : row;
-    margin-right : 30px;
 }
 .current-currency {
     width : 20px;
@@ -11,6 +10,17 @@
     background-color : black;
     padding : 2px;
     border-radius : 50%;
+}
+.change-currency-main-container {
+    display : flex;
+    align-items : center;
+    justify-content: center;
+}
+.change-currency-currency-type {
+    font-family : poppins;
+    font-size : 1em;
+    color : white;
+    margin-right : 10px;
 }
 .currency-type {
     font-family : poppins;
@@ -33,11 +43,65 @@
     justify-content: center;
     flex-direction : row;
     height : 30px;
+    position : relative;
 }
 .change-currency:hover {
+    cursor: pointer;
+}
+.change-currency-active {
+    font-family : poppins;
+    font-size : 1em;
+    color : white;
+    border : none;
+    padding : 3px 9px 3px 9px;
+    background-color : rgb(45, 56, 56);
+    border : none;
+    border-radius : 10px;
+    padding-left : 25px;
+    padding-right : 25px;
+    display : flex;
+    align-items : center;
+    justify-content: center;
+    flex-direction : row;
+    height : 30px;
+}
+.change-currency-active:hover {
     cursor: pointer;
 }
 .currency-drop-down-arrow {
     width : 10px;
     margin-left : 5px;
+}
+
+@keyframes handle {
+    from {opacity : 0}
+    to {opacity : 0.9}
+}
+.currency-popup {
+    position : absolute;
+    z-index : 10;
+    background-color : black;
+    display : none;
+    color : white;
+    width : 50%;
+    height : 400px;
+    top : calc(50% - 200px);
+    left : 50%;
+    transform : translateX(-50%);
+    border : 1px dashed white;
+}
+.currency-popup-active {
+    display : block;
+    position : absolute;
+    z-index : 10;
+    background-color : black;
+    border : 1px dashed grey;
+    opacity : 0.9;
+    color : white;
+    width : 50%;
+    height : 400px;
+    top : calc(50% - 200px);
+    left : 50%;
+    transform : translateX(-50%);
+    animation : handle 0.4s ease-in;
 }
