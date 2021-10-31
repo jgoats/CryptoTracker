@@ -8,7 +8,7 @@ export default class CoinHeader extends Component {
                 <span>#</span>
                 <span>Logo</span>
                 <p className="coin-header-name">Name</p>
-                <p>{`Price (${this.props.currency})`}</p>
+                <p>{`Price (${this.props.currencyabbr})`}</p>
                 <p>1h</p>
                 <p>24h</p>
                 <p>7d</p>
