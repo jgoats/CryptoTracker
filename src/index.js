@@ -41,6 +41,7 @@ export default class App extends React.Component {
         this.handleDuration = this.handleDuration.bind(this);
         this.changeCurrency = this.changeCurrency.bind(this);
         this.setCurrency = this.setCurrency.bind(this);
+        this.changeCoin = this.changeCoin.bind(this);
     }
     handleDuration(num) {
         var url;
@@ -334,6 +335,12 @@ export default class App extends React.Component {
             wascurrencychanged: false
         })
     }
+    changeCoin(coin) {
+        // struture string to match end point requirements
+        this.setState({
+            coin: coin
+        })
+    }
     componentDidMount() {
         let url = `api.coingecko.com/api/v3/coins/${this.state.coin}/market_chart?vs_currency=${this.state.currencyabbr}&days=1`;
         let newUrl = "https://" + url.replace(" ", "");
@@ -398,6 +405,7 @@ export default class App extends React.Component {
             <div>
                 <Landingpage
                     coin={this.state.coin}
+                    changeCoin={this.changeCoin}
                     totalvolumn={this.state.totalvolumn}
                     graphColor={this.state.lineGraphColor}
                     graphlabels={this.state.dates}
