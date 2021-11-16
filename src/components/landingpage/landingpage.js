@@ -14,7 +14,12 @@ export default class Landingpage extends React.Component {
     render() {
         return (
             <div className="landingpage-container">
-                <Navigation changeCoin={this.props.changeCoin} currency={this.props.currency} currencyabbr={this.props.currencyabbr} changeCurrency={this.props.changeCurrency} />
+                <Navigation
+                    changeCoin={this.props.changeCoin}
+                    currency={this.props.currency}
+                    currencyabbr={this.props.currencyabbr}
+                    changeCurrency={this.props.changeCurrency}
+                    handleSpinner={this.props.handleSpinner} />
                 <p className="overview-heading">{`${this.props.coin.replace(this.props.coin[0], this.props.coin[0].toUpperCase())} Overview`}</p>
                 <Overview
                     handleSpinner={this.props.handleSpinner}
