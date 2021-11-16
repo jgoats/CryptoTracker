@@ -8,8 +8,11 @@ export default class SearchCoins extends Component {
         super();
         this.state = {
             coins: [],
+            value: "",
+            spinnerClass: "searchcoin-spinner-default"
         }
         this.handleSearch = this.handleSearch.bind(this);
+        this.clearCoinResults = this.clearCoinResults.bind(this);
     }
     handleSearch(e) {
         let input = e.target.value;
@@ -21,102 +24,67 @@ export default class SearchCoins extends Component {
                 }
             }).join("");
         }
-        switch (input.length) {
-            case 1: {
-                let url = `https://crypto-app-server.herokuapp.com/coins/${input}`
-                Axios({
-                    method: "get",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    url: url
-                }).then((result) => {
-                    let names = [];
-                    result.data.map((item) => {
-                        names.push(item.id);
-                    })
-                    this.setState({
-                        coins: names
-                    })
-                }).catch((err) => {
-                    if (err) {
-                        this.setState({
-                            coins: []
-                        })
-                    }
+        this.setState({
+            value: input
+        })
+        if (input.length == 1) {
+            this.setState({
+                spinnerClass: "searchcoin-spinner-active"
+            })
+            let url = `https://crypto-app-server.herokuapp.com/coins/${input}`
+            Axios({
+                method: "get",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                url: url
+            }).then((result) => {
+                let names = [];
+                result.data.map((item) => {
+                    names.push(item.id);
                 })
-            } break;
-            case 2: {
-                let url = `https://crypto-app-server.herokuapp.com/coins/${input}`
-                Axios({
-                    method: "get",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    url: url
-                }).then((result) => {
-                    let names = [];
-                    result.data.map((item) => {
-                        names.push(item.id);
-                    })
-                    this.setState({
-                        coins: names
-                    })
-                }).catch((err) => {
-                    if (err) {
-                        this.setState({
-                            coins: []
-                        })
-                    }
+                this.setState({
+                    coins: names,
+                    spinnerClass: "searchcoin-spinner-default"
                 })
-            } break;
-            case 3: {
-                let url = `https://crypto-app-server.herokuapp.com/coins/${input}`
-                Axios({
-                    method: "get",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    url: url
-                }).then((result) => {
-                    let names = [];
-                    result.data.map((item) => {
-                        names.push(item.id);
-                    })
+            }).catch((err) => {
+                if (err) {
                     this.setState({
-                        coins: names
+                        coins: []
                     })
-                }).catch((err) => {
-                    if (err) {
-                        this.setState({
-                            coins: []
-                        })
-                    }
-                })
-            }
-                break;
+                }
+            })
         }
-        if (input.length == 0) {
-            console.log(0);
+
+        else if (input.length == 0) {
             this.setState({
                 coins: []
             })
         }
-
+    }
+    clearCoinResults() {
+        this.setState({
+            coins: [],
+            value: ""
+        })
     }
     render() {
         return (
             <div className='search-coin-container'>
+
+                <svg version="1.1" x="0" y="0" viewBox="0 0 24 24" className={this.state.spinnerClass}><g><g id="Layer_114" data-name="Layer 114">
+                    <path d="m21 12a9 9 0 1 1 -3.84-7.36l-.11-.32a1 1 0 0 1 1.95-.64l1 3a1 1 0 0 1 -.14.9 1 1 0 0 1 -.86.42h-3a1 1 0 0 1 -1-1 1 1 0 0 1.71-.94 7 7 0 1 0 3.29 5.94 1 1 0 0 1 2 0z" fill="whitesmoke" data-original="#000000" /></g></g></svg>
                 <div className="search-container-shim"></div>
                 <img className="search-eye-glass" src={EyeGlass} />
-                <form>
-                    <input onChange={(e) => this.handleSearch(e)} className="search-coin-input" type="search" placeholder="Search..." />
+                <form className="search-coin-form">
+                    <input value={this.state.value} onChange={(e) => this.handleSearch(e)} className="search-coin-input" type="search" placeholder="Search..." />
                 </form>
                 <div className="coin-results">
 
-                    {this.state.coins ? this.state.coins.map((item, index) => <div className="coin-results-item" key={index}>
-                        <button onClick={() => { this.props.changeCoin(item) }} key={index}>{item}</button>
-                    </div>) : <div></div>}
+                    {this.state.coins ? this.state.coins.map((item, index) =>
+                        <div className="coin-results-item" key={index}>
+                            <button className="coin-results-btn" onClick={() => { this.props.changeCoin(item), this.clearCoinResults() }} key={index}>{item}</button>
+                        </div>) : <div></div>}
                 </div>
             </div>
         )
