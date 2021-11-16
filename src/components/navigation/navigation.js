@@ -16,7 +16,9 @@ export default class Navigation extends Component {
                         <ViewCoins />
                         <ViewPortfolio />
                     </section>
-                    <SearchCoins changeCoin={this.props.changeCoin} />
+                    <SearchCoins
+                        changeCoin={this.props.changeCoin}
+                        handleSpinner={this.props.handleSpinner} />
                     <ChangeCurrency changeCurrency={this.props.changeCurrency} currency={this.props.currency} currencyabbr={this.props.currencyabbr} />
                 </div>
                 <CoinHeaderInfo totalCoins={30} performance={20} mostCoin={"ETH"} secondMostCoin={"ETC"} thirdMostCoin={"DOGE"} />
