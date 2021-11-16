@@ -95,8 +95,8 @@
     position : absolute;
     z-index : 10;
     background-color : black;
-    border : 1px dashed grey;
-    opacity : 0.9;
+    box-shadow : 0px 0px 1px white;
+    opacity : 1;
     color : white;
     width : 50%;
     height : 400px;
@@ -104,4 +104,15 @@
     left : 50%;
     transform : translateX(-50%);
     animation : handle 0.4s ease-in;
+}
+.currency-btn {
+    color : white;
+    background-color : #1f2828;
+    padding : 8px 12px 8px 12px;
+    box-shadow : 0px 0px 2px white;
+    margin : 4px;
+    border : none;
+}
+.currency-btn:hover {
+    background-color : grey;
 }
