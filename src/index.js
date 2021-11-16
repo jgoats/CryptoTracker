@@ -336,9 +336,63 @@ export default class App extends React.Component {
         })
     }
     changeCoin(coin) {
-        // struture string to match end point requirements
         this.setState({
-            coin: coin
+            coin: coin,
+            handleSpinner: "active-spinner"
+        })
+        let url = `api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=${this.state.currencyabbr}&days=1`;
+        let newUrl = "https://" + url.replace(" ", "");
+        Axios({
+            method: "get",
+            url: newUrl,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((result) => {
+            let prices = result.data.prices.map((price) => {
+                return Math.floor(price[1])
+            })
+            this.setState({
+                historicalPrices: prices,
+                dates: prices,
+                totalvolumn: [],
+                handleSpinner: "default-spinner"
+            })
+            result.data.total_volumes.forEach((value, index) => {
+                if ((index + 1) % 12 == 0) {
+                    this.setState({
+                        totalvolumn: [...this.state.totalvolumn, Math.floor(value[1])]
+                    })
+                }
+            });
+            if (this.state.historicalPrices[0] < this.state.historicalPrices[this.state.historicalPrices.length - 1]) {
+                this.setState({
+                    lineGraphColor: ["rgb(25,150,64)", "rgba(25,150,64 , 0.2)"]
+                })
+            }
+            else {
+                this.setState({
+                    lineGraphColor: ["rgb(206,18,18)", "rgba(206,18,18,0.2)"]
+                })
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
+        let getCurrentPriceUrl = `api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=${this.state.currencyabbr}`;
+        let newGetCurrentPriceUrl = "https://" + getCurrentPriceUrl.replace(" ", "");
+        console.log(newGetCurrentPriceUrl);
+        Axios({
+            method: "get",
+            url: newGetCurrentPriceUrl,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((result) => {
+            this.setState({
+                currentcoinprice: result["data"][`${coin}`][`${this.state.currencyabbr}`]
+            })
+        }).catch((err) => {
+            console.log(err)
         })
     }
     componentDidMount() {
