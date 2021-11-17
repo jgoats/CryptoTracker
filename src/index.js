@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDom from "react-dom";
 import Landingpage from "../src/components/landingpage/landingpage.js";
+import PortfolioPage from "./components/portfoliopage/portfoliopage.js";
+import { Switch, Route, Outlet, Link, BrowserRouter as Router } from "react-router-dom";
 import Axios from "axios";
 
 export default class App extends React.Component {
@@ -456,8 +458,9 @@ export default class App extends React.Component {
     }
     render() {
         return (
-            <div>
-                <Landingpage
+            <Router>
+                <Route path="/portfolio" exact render={props => <PortfolioPage />} />
+                <Route path="/" exact render={props => <Landingpage
                     coin={this.state.coin}
                     changeCoin={this.changeCoin}
                     totalvolumn={this.state.totalvolumn}
@@ -472,12 +475,11 @@ export default class App extends React.Component {
                     changeCurrency={this.changeCurrency}
                     wascurrencychanged={this.state.wascurrencychanged}
                     setCurrency={this.setCurrency}
-                />
-            </div>
+                />} />
+
+            </Router>
         )
     }
 }
-
-
 
 ReactDom.render(React.createElement(App), document.getElementById("root"));
