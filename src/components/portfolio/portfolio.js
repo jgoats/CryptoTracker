@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import "./portfolio.scss";
+import { Link } from "react-router-dom";
 
-export default class ViewPortfolio extends Component {
+export default class PortfolioBtn extends Component {
     render() {
         return (
             <div>
-                <button className="view-portfolio-btn-default">Portfolio</button>
+                <Link className="view-portfolio-btn-default" to="/portfolio">Portfolio </Link>
             </div>
         )
     }
